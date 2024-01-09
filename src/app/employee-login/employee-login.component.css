@@ -1,0 +1,81 @@
+
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url("/assets/astreya_background.png");
+    background-size: cover;
+    height: 100vh;
+    margin: 0;
+}
+
+
+.login-container {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    width: 325px;
+}
+
+.login-container h2 {
+    text-align: center;
+}
+.login-container h3 {
+    text-align: center;
+    
+}
+
+
+.login-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-container form label,
+.login-container form input {
+    margin: 5px 0;
+}
+
+.login-container form input {
+    padding: 4px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    width: 280px;
+    
+   
+}
+
+.login-container form button {
+    background-color: #ff8001;
+    color: #fff;
+    padding: 7px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin: 11px 0;
+    width: 190px;
+    margin-left: 35px;
+    margin-top: 20px;
+}
+
+.login-container  button:hover {
+    background-color: #ff8001;
+    
+    
+}
+.logo {
+    /* position: absolute; */
+
+    top: 2px;
+    right: 10px;
+    width: 90px; 
+    height: 25px;
+    margin-left: 205px;
+    margin-top: 0px;
+    
+}
+
+

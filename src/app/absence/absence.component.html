@@ -1,0 +1,73 @@
+<!-- <p>absence works!</p> -->
+<body>
+
+    <div id="container">
+        <div id="left-half">
+            <img id="profile-image" [src]="girl_icon" alt="Profile Image">
+            <p>Name: {{emp_name}}</p>
+            <p>Position: Developer</p>
+            <p>Email: {{email}}</p>
+        </div>
+        <div id="right-half">
+            <h3><B>Absence Requests Table</B></h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Time Off</th>
+                        <th>Date</th>
+                        <th>Day of the Week</th>
+                        <th>Type</th>
+                        <th>Requested Unit of Time</th>
+                        <th>Comment</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Sample data, replace with dynamic data from your system -->
+                    <tr>
+                        <td>{{timeoff}}</td>
+                        <td>{{date}}</td>
+                        <td>{{dayoftheweek}}</td>
+                        <td>{{type}}</td>
+                        <td>{{unitoftime}}</td>
+                        <td>{{comment}}</td>
+                    </tr>
+                    <!-- <tr>
+                        <td>Vacation</td>
+                        <td>2023-12-21</td>
+                        <td>Wednesday</td>
+                        <td>Paid Leave</td>
+                        <td>8 hours</td>
+                        <td>       </td>
+                    </tr>
+                    < Add more rows as needed -->
+                    <!-- <tr>
+                        <td>Sick Leave</td>
+                        <td>2023-12-25</td>
+                        <td>Sunday</td>
+                        <td>Sick Leave</td>
+                        <td>8 hours</td>
+                        <td>       </td>
+                    </tr>
+                    <tr>
+                        <td>Sick Leave</td>
+                        <td>2023-12-25</td>
+                        <td>Sunday</td>
+                        <td>Sick Leave</td>
+                        <td>8 hours</td>
+                        <td>       </td>
+                    </tr>
+                    <tr>
+                        <td>Vacation</td>
+                        <td>2023-12-21</td>
+                        <td>Wednesday</td>
+                        <td>Paid Leave</td>
+                        <td>8 hours</td>
+                        <td>       </td>
+                    </tr> -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>

@@ -1,0 +1,33 @@
+<!-- <p>mark-attendance-form works!</p> -->
+<body>
+
+
+  <div class="form">
+      <h2 class="mb-4 text-center">User Information</h2>
+      <form (ngSubmit)="onSubmit()">
+          <div class="form-group" >
+              <label for="userId">User ID</label>
+              <div class="creative-input">
+                  <input type="text" class="form-control" id="userId" name="userId" [(ngModel)]= "userId" placeholder="Enter your user ID">
+              </div>
+          </div>
+
+          <div class="form-group">
+              <label for="username">Username</label>
+              <div class="creative-input">
+                  <input type="text" class="form-control" id="username" name="username" [(ngModel)]= "username" placeholder="Enter your username">
+              </div>
+          </div>
+          <div *ngIf="message" class="alert alert-info mt-3">
+            {{ message }}
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">Submit</button>
+      </form>
+      <button type="button" (click)="onsave1()" class="logout-btn" >Redirect</button>
+  </div>
+  <!-- <button type="submit" (click)="onsave1()"class="button">Redirect to face recognised</button> -->
+
+
+
+</body>

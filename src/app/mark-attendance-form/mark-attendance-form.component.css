@@ -1,0 +1,117 @@
+
+body {
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url("/assets/astreya_background.png");
+    font-family: 'Arial', sans-serif;
+}
+
+.form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.creative-input {
+    position: relative;
+}
+
+.creative-input input {
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+
+.creative-input::after {
+    content: '\f007'; /* Unicode for user icon */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    color: #ced4da;
+}
+
+.btn-primary {
+    background-color: #ff8001;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+/* .btn-logout {
+    background-color: #ff8001;  */
+    /* color: #fff; White text */
+    /* padding: 5px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    width: 20%;
+    margin-bottom: 5px;
+    
+    transition: background-color 0.3s ease;
+} */
+.logout-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ff8001;
+    color: #fff;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.logout-btn:hover {
+    background-color: #0056b3;
+}
+.admin-container {
+    top: 570px;
+     right: 680px;
+     background-color: green; 
+     color: #fff; 
+     padding: 20px;
+     display: none;
+     width: 180px;
+     position: fixed;
+     font-family: Arial, sans-serif;
+     border-radius: 7px; 
+     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+  }
+  .close-button{
+    
+    /* /* border: solid white 3px; */
+    cursor: pointer;
+  
+   
+
+  } 

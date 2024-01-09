@@ -1,0 +1,153 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  background-image: url("/assets/astreya_background.png");
+  height: 100vh;
+}
+nav {
+  /* background-color: #f0eaea; */
+  padding: 15px;
+  display: flex;
+  gap: 75rem;
+ 
+}
+.nav-icon{
+
+  width: 30px;
+    height: 30px;
+}
+
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 35px;
+  overflow: hidden;
+}
+
+li {
+  float: left;
+  margin-right: 25px;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+
+
+
+  h1 {
+    text-align: center;
+    color: #fff;
+    font-size: 24px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-decoration: underline;
+    
+  }
+
+  .user-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* border: 1px solid #ddd; */
+    padding: 10px;
+    margin-bottom: 10px;
+    color: #fff;
+    border-radius: 4px;
+    margin-left: 450px;
+  }
+
+ 
+  .user-actions{
+    display: flex;
+    align-items: center;
+    color: #fff;
+
+  }
+  .user-actions img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    
+    margin-right: 11px;
+    
+
+  }
+
+  
+
+  .user-actions button {
+    cursor: pointer;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    
+  }
+
+  .approve-btn {
+    background-color: #4caf50;
+    color: #fff;
+    margin-left: 201px;
+    height: 35px;
+  }
+
+  .reject-btn {
+    background-color: #f44336;
+    color: #fff;
+    margin-left: 20px;
+    height: 35px;
+    width: 60px;
+  }
+  .admin-container {
+ 
+  
+    top: 110px;
+    right: 110px;
+    background-color: #fff; 
+    color: #333; 
+    padding: 20px;
+    display: none;
+    width: 180px;
+    position: fixed;
+    font-family: Arial, sans-serif;
+    border-radius: 10px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+}
+
+
+#adminname, #adminemail {
+  margin: 0;
+  font-size: 18px;
+  margin-bottom: 12px;
+  /* font-weight: bold; */
+}
+.Logout{
+  cursor: pointer;
+  font-size: 18px;
+  align-self: flex-end; 
+  font-weight: bold;
+  color: black;
+  
+ }
+
+
+.close-button {
+  cursor: pointer;
+  font-size: 18px;
+  align-self: flex-end; 
+}
+
+
+  
+  
+
+

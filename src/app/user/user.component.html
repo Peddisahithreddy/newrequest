@@ -1,0 +1,60 @@
+<!-- <p>user works!</p> -->
+
+<body>
+  <nav>
+    <div class="nav-left">
+        <!-- <img [src]="image" alt="Logo" class="logo2"> -->
+    </div>
+    <ul>
+      <li><a  (click)="showNotification()"><img [src]="boy_icon" alt="Photo Icon" class="nav-icon">
+        </a></li>
+
+
+
+      <!-- <li><a routerLink="/login">Logout</a></li> -->
+    </ul>
+  </nav>
+  <div class="admin-container" id="admin-details">
+
+      <p id="adminname">Admin</p>
+      <p id="adminemail">admin@gmail.com</p>
+      <p id="adminemail">ID: 23456789</p>
+
+
+    <span class="Logout" (click)="onsave2()">Logout</span>
+
+    </div>
+
+
+<div class="container">
+  <button class="add-button"(click)="onsave1()">Add Employee</button>
+
+
+  <table>
+    <tr>
+      <th class="heading">Employee</th>
+      <!-- <th>Action</th> -->
+    </tr>
+    <tr *ngFor = "let employee of employees">
+      <td class="text">{{employee.emp_name}}</td>
+      <td><a [routerLink]="['/details', employee.emp_id]">View</a></td>
+      <td><button class="edit-button1"(click)="onsave3()">Edit</button></td>
+    </tr>
+    <tr>
+      <td class="text">Employee 2</td>
+      <td><button class="edit-button">View</button></td>
+      <td><button class="edit-button1">Edit</button></td>
+    </tr>
+    <tr>
+      <td class="text">Employee 3</td>
+      <td><button class="edit-button">View</button></td>
+      <td><button class="edit-button1"(click)="onsave()">Edit</button></td>
+    </tr>
+    <tr>
+      <td class="text">Employee 4</td>
+      <td><button class="edit-button">View</button></td>
+      <td><button class="edit-button1"(click)="onsave()">Edit</button></td>
+    </tr>
+  </table>
+</div>
+</body>

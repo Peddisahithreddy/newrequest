@@ -1,0 +1,104 @@
+<!-- <p>calendar-details works!</p> -->
+
+<body>
+
+  <nav>
+
+    <div class="nav-items">
+      <h1>Attendance Calendar</h1>
+    </div>
+
+    <div class="nav-items">
+      <ul>
+        <li><a (click)="showNotification()"><img [src]="boy_icon" alt="Photo Icon" class="nav-icon"></a></li>
+        <!-- <li><a routerLink="/login">Logout</a></li> -->
+      </ul>
+    </div>
+
+  </nav>
+
+  <div class="admin-container" id="admin-details">
+
+    <p id="adminname">Employee</p>
+    <p id="adminemail">Employee@gmail.com</p>
+    <p id="adminemail">ID: 23456789</p>
+
+    <span class="Logout" (click)="onsave2()">Logout</span>
+
+    <!-- <span class="close-button" (click)="hideNotification()">✖</span> -->
+  </div>
+
+
+
+  <div class="navbar">
+
+    <div class="navbar-items">
+      <mat-form-field color="warn">
+        <mat-label>Enter a date range</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input matStartDate placeholder="Start date">
+          <input matEndDate placeholder="End date">
+        </mat-date-range-input>
+        <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker><mat-datepicker-actions>
+            <button mat-button matDatepickerCancel class="cancel-btn">Cancel</button>
+            <button mat-raised-button color="primary" matDatepickerApply class="apprv-btn">Apply</button>
+          </mat-datepicker-actions></mat-date-range-picker>
+
+      </mat-form-field>
+    </div>
+    
+
+    <div class="navbar-items">
+      <div>
+        <app-demo-utils [(view)]="view" [(viewDate)]="viewDate">
+        </app-demo-utils>
+      </div>
+    </div>
+  </div>
+
+    <div class="calendar1">
+      <div class="day">
+        <span class="day-name">Mon</span><br>
+        <span class="attendance present">Present</span>
+      </div>
+      <div class="day">
+        <span class="day-name">Tue</span><br>
+        <span class="attendance absent">Absent</span>
+      </div>
+      <div class="day">
+        <span class="day-name">Wed</span><br>
+        <span class="attendance present">Present</span>
+      </div>
+      <div class="day">
+        <span class="day-name">Thu</span><br>
+        <span class="attendance absent">Absent</span>
+      </div>
+      <div class="day">
+        <span class="day-name">Fri</span><br>
+        <span class="attendance present">Present</span>
+      </div>
+      <div class="day">
+        <span class="day-name">Sat</span><br>
+        <span class="attendance">----</span>
+      </div>
+      <div class="day">
+        <span class="day-name">Sun</span><br>
+        <span class="attendance">----</span>
+      </div>
+
+  
+
+  <div class="calendar" [ngSwitch]="view">
+    <mwl-calendar-month-view *ngSwitchCase="'month'" [viewDate]="viewDate" [events]="events">
+    </mwl-calendar-month-view>
+    <mwl-calendar-week-view *ngSwitchCase="'week'" [viewDate]="viewDate" [events]="events">
+    </mwl-calendar-week-view>
+    <mwl-calendar-day-view *ngSwitchCase="'day'" [viewDate]="viewDate" [events]="events">
+    </mwl-calendar-day-view>
+  </div>
+</div>
+
+
+</body>

@@ -1,0 +1,32 @@
+<body>
+    <div class="login-container">
+        <!-- <img [src]="logo" alt="Logo" class="logo"> -->
+        <h3><B>Edit User Information</B></h3>
+       
+       
+        <form class="Form">
+            <label for="username">Name:</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username" >
+
+            <label for="gender">Gender:</label>
+            <input type="text" id="gender" name="gender" placeholder="Enter the gender" required>
+            <!-- <select id="gender" name="gender" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select> -->
+
+            <label for="id">ID:</label>
+            <input type="text" id="id" name="id" placeholder="Enter the ID" required>
+
+            <label for="contactNumber">Contact Number:</label>
+            <input type="text" id="contactNumber" name="contactNumber" placeholder="Enter the contact number" required>
+
+            <label for="status">Status:</label>
+            <input type="text" id="status" name="status" placeholder="Enter the status" required>
+
+            <button type="submit" (click)="onsave()">Update Information</button>
+
+            
+        </form>
+        </div>
+</body>

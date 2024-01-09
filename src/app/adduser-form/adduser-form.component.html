@@ -1,0 +1,30 @@
+<!-- <p>adduser-form works!</p> -->
+<body>
+    <div class="admin-container">
+        <h1>Add user form</h1>
+    
+
+    <form id="addUserForm">
+    
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+  
+      <label for="id">ID:</label>
+      <input type="text" id="id" name="id" required>
+  
+      <label for="contactNumber">Contact Number:</label>
+      <input type="tel" id="contactNumber" name="contactNumber" pattern="[0-9]{10}" required>
+      
+  
+      <label for="photo">Photo:</label>
+      <input type="file" id="photo" name="photo" accept="image/*" class="file">
+  
+      <!-- <img id="photo-preview" alt="Photo Preview"> -->
+  
+      <button type="submit" (click)="onsave()">Add User</button>
+    </form>
+    </div>
+  
+  
+  
+  </body>

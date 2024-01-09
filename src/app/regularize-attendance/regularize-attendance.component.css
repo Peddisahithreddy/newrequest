@@ -1,0 +1,79 @@
+body {
+    font-family: Arial, sans-serif;
+    /* background-color: #f4f4f4; */
+    /* margin: 0;
+    padding: 0; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    background-image: url("/assets/astreya_background.png");
+    height: 100%;
+    margin: 0;
+  
+    height: 100vh;
+  }
+
+.confirmation-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    text-align: center;
+}
+
+.add h2 {
+    color: #3498db;
+    margin-bottom: 10px;
+}
+
+p {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button.yes {
+    background: #ff8001;
+    color: #fff;
+}
+
+.button.no {
+    background: #ede9e9;
+    color: black;
+    margin-left: 10px;
+}
+
+.button:hover {
+    background-color: #34495e;
+}
+.admin-container {
+    top: 470px;
+     right: 700px;
+     background-color: green; 
+     color: #fff; 
+     padding: 20px;
+     display: none;
+     width: 170px;
+     position: fixed;
+     font-family: Arial, sans-serif;
+     border-radius: 7px; /* Rounded corners */
+     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+  }
+  .Request{
+    color: #fff;
+  }
+  .close-button{
+    cursor: pointer;
+  }
+  

@@ -1,0 +1,80 @@
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url("/assets/astreya_background.png");
+    background-size: cover;
+    height: 100vh;
+    margin: 0;
+}
+
+nav {
+    padding: 10px;
+    display: flex;
+    /* justify-content: space-between; */
+    
+    width: 100%;
+    position: fixed;
+    top: 0;
+}
+
+.nav-left {
+    padding: 5px;
+}
+
+.logo2 {
+    width: 90px;
+    height: 90px;
+    margin-left: 20px;
+}
+
+.login-container {
+    background-color: rgba(255, 255, 255, 0.9); 
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    width: 300px;
+    text-align: center;
+    margin-top: 80px; 
+}
+
+.logo {
+    width: 150px;
+    height: 150px;
+    margin: 20px 0;
+}
+
+.login-container h3 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.login-container h5 {
+    color: #666;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.login-container button {
+    background-color: #ff8001;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 200px;
+    margin: 10px 5px;
+    transition: background-color 0.3s ease;
+}
+
+.login-container button:hover {
+    background-color: #ff6a00;
+}
+
+
+.login-container button:active {
+    transform: scale(0.95);
+}

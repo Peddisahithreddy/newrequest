@@ -1,0 +1,18 @@
+<!-- <p>login works!</p> -->
+<body>
+    <div class="login-container">
+        <img [src]="logo" alt="Logo" class="logo">
+        <h2>Login</h2>
+
+        <h4>Please Login to your account </h4>
+        <form class="Form">
+            <label for="username">Username:</label>
+            <input type="text" id="username" [(ngModel)]= "username" name="username" placeholder="Enter your username" >
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" [(ngModel)]= "password" name="password" placeholder="Enter your password" >
+
+            <button type="submit"(click)="onsave()">Login</button>
+        </form>
+        </div>
+</body>

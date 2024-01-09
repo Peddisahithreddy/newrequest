@@ -1,0 +1,140 @@
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    background-image: url("/assets/astreya_background.png");
+    height: 100vh;
+  }
+  nav {
+    /* background-color: #f0eaea; */
+    padding: 15px;
+    display: flex;
+    gap: 75rem;
+   
+  }
+  .nav-icon{
+  
+    width: 30px;
+      height: 32px;
+  }
+  
+  
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 35px;
+    overflow: hidden;
+  }
+  
+  li {
+    float: left;
+    margin-right: 25px;
+  }
+  
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+
+/* .admin-container {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 400px;
+    text-align: center;
+} */
+
+h1 {
+    color: #fff;
+}
+
+.attendance-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    margin-top: 20px;
+}
+
+label {
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+input, select {
+    padding: 10px;
+    margin-bottom: 15px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: #fff;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+   
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.admin_container {
+  top: 110px;
+   right: 110px;
+   background-color: #fff; 
+   color: #333; 
+   padding: 20px;
+   display: none;
+   width: 180px;
+   position: fixed;
+   font-family: Arial, sans-serif;
+   border-radius: 10px; /* Rounded corners */
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+}
+
+
+#adminname, #adminemail {
+ margin: 0;
+ font-size: 18px;
+ margin-bottom: 12px;
+ /* font-weight: bold; */
+}
+.Logout{
+  cursor: pointer;
+  font-size: 18px;
+  align-self: flex-end; 
+  font-weight: bold;
+  color: black;
+  
+ }
+
+
+.close-button {
+ cursor: pointer;
+ font-size: 18px;
+ align-self: flex-end; 
+}
+
+
+
+
+
+
+
+
+

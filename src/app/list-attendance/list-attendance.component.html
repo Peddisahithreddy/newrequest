@@ -1,0 +1,58 @@
+<body>
+  <nav>
+    <div class="nav-left">
+        <!-- <img [src]="image" alt="Logo" class="logo2"> -->
+    </div>
+    <ul>
+      <li><a (click)="showNotification()"><img [src]="boy_icon" alt="Photo Icon" class="nav-icon">
+        </a></li>
+
+<!--
+      <li><a routerLink="/login">Logout</a></li> -->
+    </ul>
+  </nav>
+  <div class="admin-container" id="admin-details">
+
+    <p id="adminname">{{username}}</p>
+    <p id="adminemail">{{email}}</p>
+    <p id="adminemail">ID: {{id}}</p>
+
+
+    <span class="Logout" (click)="onsave2()">Logout</span>
+    <!-- <span class="close-button" (click)="hideNotification()">✖</span> -->
+  </div>
+
+  <div class="container">
+    <div class="attendance-status">
+    <h2>Attendance Status</h2></div>
+
+    <div class="user-status">
+      <span class="user-name"(click)="onsave()">{{emp_name}}</span>
+      <div class="present">{{status}}</div>
+    </div>
+
+    <div class="user-status">
+      <span class="user-name">Employee 2</span>
+      <div class="absent">Absent</div>
+    </div>
+
+    <div class="user-status">
+      <span class="user-name">Employee 3</span>
+      <div class="present">Present</div>
+    </div>
+
+    <div class="user-status">
+      <span class="user-name">Employee 4</span>
+      <div class="absent">Absent</div>
+    </div>
+
+    <div class="user-status">
+      <span class="user-name">Employee 5</span>
+      <div class="present">Present</div>
+    </div>
+
+
+
+  </div>
+
+</body>

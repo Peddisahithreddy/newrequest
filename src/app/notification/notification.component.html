@@ -1,0 +1,49 @@
+<!-- <p>notification works!</p> -->
+<body>
+  <nav>
+    <div class="nav-left">
+        <!-- <img [src]="image" alt="Logo" class="logo2"> -->
+    </div>
+    <ul>
+      <li><a (click)="showNotification()"><img [src]="boy_icon" alt="Photo Icon" class="nav-icon">
+        </a></li>
+
+      <!-- <li><a >Admin</a></li>
+      <li><a routerLink="/login">Logout</a></li> -->
+    </ul>
+  </nav>
+  <div class="admin-container" id="admin-details">
+
+    <p id="adminname">Admin</p>
+    <p id="adminemail">admin@gmail.com</p>
+    <p id="adminemail">ID: 23456789</p>
+
+
+  <span class="Logout" (click)="onsave2()">Logout</span>
+  </div>
+
+    <div class="container">
+      <h1>Notification</h1>
+
+      <div class="user-card" *ngFor = "let leave of leaves">
+        <div class="user-actions">
+          <img [src]="girl_icon"alt="User 1">
+          <span>{{leave.emp_name}}</span>
+          <button class="approve-btn" (click)="handleButtonClick(leave.emp_id, leave.request_id)">Approve</button>
+          <button class="reject-btn"(click)="getRequestId(leave.request_id)">Reject</button>
+        </div>
+      </div>
+
+      <div class="user-card">
+
+        <div class="user-actions">
+          <img [src]="boy_icon" alt="User 2">
+          <span>User 2</span>
+          <button class="approve-btn"(click)="onsave()">Approve</button>
+          <button class="reject-btn"(click)="onsave1()">Reject</button>
+        </div>
+      </div>
+
+       </div>
+  </body>
+
