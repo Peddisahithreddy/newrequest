@@ -43,6 +43,7 @@ import { DemoUtilsComponent } from './demo-utils/demo-utils.component';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UserFormComponent } from './user-form/user-form.component';
 
 
 
@@ -76,6 +77,7 @@ import { ReactiveFormsModule } from '@angular/forms';
                       MarkAttendanceFormComponent,
                       EditDetailsComponent,
                       DemoUtilsComponent,
+                      UserFormComponent,
 
 
 

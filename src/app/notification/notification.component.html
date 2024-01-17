@@ -14,9 +14,9 @@
   </nav>
   <div class="admin-container" id="admin-details">
 
-    <p id="adminname">Admin</p>
-    <p id="adminemail">admin@gmail.com</p>
-    <p id="adminemail">ID: 23456789</p>
+    <p id="adminname">{{admin_username}}</p>
+    <p id="adminemail">{{admin_email}}</p>
+    <p id="adminemail">ID: {{adminid}}</p>
 
 
   <span class="Logout" (click)="onsave2()">Logout</span>
@@ -34,13 +34,13 @@
         </div>
       </div>
 
-      <div class="user-card">
+      <div class="user-card" *ngFor = "let data of datas">
 
-        <div class="user-actions">
+        <div class="user-actions" >
           <img [src]="boy_icon" alt="User 2">
-          <span>User 2</span>
-          <button class="approve-btn"(click)="onsave()">Approve</button>
-          <button class="reject-btn"(click)="onsave1()">Reject</button>
+          <span>{{data.emp_name}}</span>
+          <button class="approve-btn"(click)="handleUserClick(data.emp_id)">Approve</button>
+          <button class="reject-btn"(click)="getId(data.emp_id)">Reject</button>
         </div>
       </div>
 

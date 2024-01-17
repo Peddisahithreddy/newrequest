@@ -27,6 +27,10 @@
       <button type="button" (click)="onsave1()" class="logout-btn" >Redirect</button>
   </div>
   <!-- <button type="submit" (click)="onsave1()"class="button">Redirect to face recognised</button> -->
+  <div class="captured_image">
+    <img *ngIf="img" [src]="img" alt="Captured Image" />
+    <!-- <img src="{{url}}" alt=""> -->
+</div>
 
 
 

@@ -1,0 +1,30 @@
+<!-- <p>user-form works!</p> -->
+
+<body>
+  <div>
+    <!-- <h1>Add user form</h1> -->
+
+
+    <form id="addUserForm" (ngSubmit)="onSave()">
+
+      <label for="name">Name:</label>
+      <input type="text" id="name" [(ngModel)]= "name" name="name" required>
+
+      <label for="id">ID:</label>
+      <input type="text" id="id" [(ngModel)]= "id" name="id" required>
+
+
+
+      <label for="name">Job Position:</label>
+      <input type="text" id="job" [(ngModel)]= "job" name="job" required>
+      <label for="name">Email:</label>
+      <input type="text" id="email" [(ngModel)]= "email" name="email" required>
+      <label for="name">Role:</label>
+      <input type="text" id="role" [(ngModel)]= "role" name="role" required>
+      <label for="contactNumber">Contact Number:</label>
+      <input type="tel" id="contactNumber" [(ngModel)]= "contactNumber" name="contactNumber" pattern="[0-9]{10}" required>
+
+      <button type="submit" >Add User</button>
+    </form>
+  </div>
+</body>

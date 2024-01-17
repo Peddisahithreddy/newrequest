@@ -24,6 +24,7 @@ import { AbsenceComponent } from './absence/absence.component';
 import { AdduserFormComponent } from './adduser-form/adduser-form.component';
 import { MarkAttendanceFormComponent } from './mark-attendance-form/mark-attendance-form.component';
 import { EditDetailsComponent } from './edit-details/edit-details.component';
+import { UserFormComponent } from './user-form/user-form.component';
 const routes: Routes = [
   {path: '', redirectTo: '/attendance', pathMatch: 'full' },
   {path: 'attendance', component: AttendanceComponent},
@@ -35,7 +36,7 @@ const routes: Routes = [
   {path:'details/:emp_id',component:DetailsComponent},
   {path:'add-user',component:AddUserComponent},
   {path:'welcome-admin',component:WelcomeAdminComponent},
-  {path:'notification',component:NotificationComponent},
+  {path:'notification/:id',component:NotificationComponent},
   {path:'list_attendance',component:ListAttendanceComponent},
   {path:'calendar-details',component:CalendarDetailsComponent},
   {path:'employee-login',component:EmployeeLoginComponent},
@@ -50,7 +51,8 @@ const routes: Routes = [
 
   {path:'adduserform',component:AdduserFormComponent},
   {path:'mark-attendance-form',component:MarkAttendanceFormComponent},
-  {path:'edit-details',component:EditDetailsComponent}
+  {path:'edit-details',component:EditDetailsComponent},
+  {path:'user-form',component:UserFormComponent}
 
 
 

@@ -2,6 +2,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+  }),
+};
+
 @Injectable({
   providedIn: 'root'
 })
@@ -14,19 +20,20 @@ export class UserserviceService {
     return this.http.get(this.Url)
   }
 
-  getUser(userId: number): Observable<any> {
+  getUser(userId: string): Observable<any> {
     const url = `${this.Url}/${userId}`;
     return this.http.get(url);
   }
 
 
   createUser(user:any): Observable<any> {
-    const headers = new HttpHeaders({'Content-Type':'aplication/json'});
-    return this.http.post(this.Url,JSON.stringify(user),{headers});
+
+
+    return this.http.post(this.Url,user,httpOptions);
 
   }
-  deleteUser(userId:number): Observable<any> {
-    return this.http.delete('this.Url/${userId}');
+  deleteUser(userId:string): Observable<any> {
+    return this.http.delete(`${this.Url}/${userId}`);
   }
 
 

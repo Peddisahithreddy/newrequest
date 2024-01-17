@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 
@@ -7,13 +7,19 @@ import { Router } from '@angular/router';
   templateUrl: './face-not-recognised.component.html',
   styleUrls: ['./face-not-recognised.component.css']
 })
-export class FaceNotRecognisedComponent {
+export class FaceNotRecognisedComponent implements OnInit{
   image="../assets/astreya-logo-white.svg"
   img1="../assets/face_not_recognised.png"
+  timeout!: any;
   constructor(private router: Router) {}
+  ngOnInit(): void {
+    this.timeout = setTimeout(() => {
+      this.router.navigate(['/attendance']);
+    }, 10000);
+  }
   onsave(){
-
-    this.router.navigate(['/popup']);
+    clearTimeout(this.timeout);
+    this.router.navigate(['/user-form']);
     }
 
 

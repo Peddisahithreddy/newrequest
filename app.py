@@ -9,6 +9,7 @@ from flask_migrate import Migrate
 from flask_cors import CORS,cross_origin
 from flask_bcrypt import Bcrypt
 from sqlalchemy import event
+from .detection import real_time_face_detection
 
 
 
@@ -83,15 +84,26 @@ class Admin(db.Model):
 class User(db.Model):
 
 
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), unique=True, nullable=False)
-    email = db.Column(db.String(120), unique=True, nullable=False)
+    emp_id = db.Column(db.String(100), primary_key=True)
+    emp_name = db.Column(db.String(80), unique=True, nullable=False)
+    job_position = db.Column(db.String(50),nullable = False)
+    email = db.Column(db.String(100))
+    # gender = db.Column(db.String(100))
+    # age = db.Column(db.Integer)
+    role = db.Column(db.String(120),nullable=False)
+    contact_no = db.Column(db.String(120), unique=True, nullable=False)
+
 
     def serialize(self):
         return {
-            'id': self.id,
-            'username': self.username,
-            'email': self.email
+            'emp_id': self.emp_id,
+            'emp_name': self.emp_name,
+            'job_position':self.job_position,
+            'email':self.email,
+            # 'gender':self.gender,
+            # 'age':self.age,
+            'role': self.role,
+            'contact_no': self.contact_no
         }
 
 @app.route('/users', methods=['GET'])
@@ -99,7 +111,8 @@ class User(db.Model):
 def get_users():
     users = User.query.all()
     return jsonify([user.serialize() for user in users])
-
+@app.route('/users/<string:user_id>',methods = ['GET'])
+@cross_origin()
 def get_user(user_id):
     user = User.query.get_or_404(user_id)
     return jsonify(user.serialize())
@@ -109,7 +122,14 @@ def get_user(user_id):
 @cross_origin()
 def create_user():
     data = request.get_json()
-    new_user = User(username=data['username'], email=data['email'])
+    new_user = User(emp_id = data['emp_id'],
+                    emp_name=data['emp_name'],
+                    job_position = data['job_position'],
+                    email = data['email'],
+                    # gender = data['gender'],
+                    # age = data['age'],
+                    role = data['role'],
+                    contact_no=data['contact_no'])
     db.session.add(new_user)
     db.session.commit()
     return jsonify({'message': 'User created successfully'}), 201
@@ -205,26 +225,28 @@ class MySQLHandler:
 
 class Employee(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    emp_id = db.Column(db.Integer, unique=True, nullable=False)
+    emp_id = db.Column(db.String(100), unique=True, nullable=False)
     emp_name = db.Column(db.String(100), nullable=False)
     job_position = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
-    gender = db.Column(db.String(10), nullable=False)
-    age = db.Column(db.Integer, nullable=False)
+    # gender = db.Column(db.String(10), nullable=False)
+    # age = db.Column(db.Integer, nullable=False)
+    role = db.Column(db.String(20),nullable=False)
     contact_no = db.Column(db.String(15), nullable=False)
-    username = db.Column(db.String(20), unique=True, nullable=False)
-    password = db.Column(db.String(60), nullable=False)
+    # username = db.Column(db.String(20), unique=True, nullable=True)
+    # password = db.Column(db.String(60), nullable=True)
 
-    def __init__(self, emp_id, emp_name, job_position, email, gender, age, contact_no, username, password):
+    def __init__(self, emp_id, emp_name, job_position, email, role, contact_no):
         self.emp_id = emp_id
         self.emp_name = emp_name
         self.job_position = job_position
         self.email = email
-        self.gender = gender
-        self.age = age
+        # self.gender = gender
+        # self.age = age
+        self.role = role
         self.contact_no = contact_no
-        self.username = username
-        self.password = bcrypt.generate_password_hash(password).decode('utf-8')
+        # self.username = username
+        # self.password = bcrypt.generate_password_hash(password).decode('utf-8')
 
 
     def set_password(self, password):
@@ -241,11 +263,12 @@ class Employee(db.Model):
             'emp_name': self.emp_name,
             'job_position': self.job_position,
             'email': self.email,
-            'gender': self.gender,
-            'age': self.age,
+            # 'gender': self.gender,
+            # 'age': self.age,
+            'role':self.role,
             'contact_no': self.contact_no,
-            'username': self.username,
-            'password': self.password  # Note: This exposes the hashed password, which may not be suitable in a real-world scenario
+            # 'username': self.username,
+            # 'password': self.password  # Note: This exposes the hashed password, which may not be suitable in a real-world scenario
         }
     def to_empname(self):
         return{
@@ -305,8 +328,9 @@ def get_employee(emp_id):
         'emp_name': employees.emp_name,
         'job_position': employees.job_position,
         'email': employees.email,
-        'gender': employees.gender,
-        'age': employees.age,
+        # 'gender': employees.gender,
+        # 'age': employees.age,
+        'role':employees.role,
         'contact_no': employees.contact_no,
         'username': employees.username,
         'password': employees.password,
@@ -325,11 +349,12 @@ def add_employee():
         emp_name=data['emp_name'],
         job_position=data['job_position'],
         email=data['email'],
-        gender=data['gender'],
-        age=data['age'],
+        # gender=data['gender'],
+        # age=data['age'],
+        role=data['role'],
         contact_no=data['contact_no'],
-        username=data['username'],
-        password=data['password']
+        # username=data['username'],
+        # password=data['password']
     )
 
 
@@ -376,7 +401,7 @@ def delete_employee(emp_id):
 
 class Request(db.Model):
     request_id = db.Column(db.Integer, primary_key=True,autoincrement = True)
-    emp_id = db.Column(db.String(20), unique=False, nullable=False)
+    emp_id = db.Column(db.String(100), unique=False, nullable=False)
     emp_name = db.Column(db.String(100), nullable=False)
     request_status = db.Column(db.String(20),default = "pending",nullable = False)
     request_time = db.Column(db.DateTime, nullable = False,default = datetime.utcnow)
@@ -505,13 +530,14 @@ def del_request(requestId):
     return jsonify({'message': 'Employee deleted successfully'})
 class Absence(db.Model):
     leave_id = db.Column(db.Integer,primary_key = True,autoincrement = True)
-    emp_id = db.Column(db.Integer, unique=False, nullable=False)
+    emp_id = db.Column(db.String(100), unique=False, nullable=False)
     emp_name = db.Column(db.String(100), nullable=False)
     date_from = db.Column(db.DateTime,nullable = False)
     date_to =db.Column(db.DateTime)
     contact_no = db.Column(db.String(100),nullable = False)
     email = db.Column(db.String(100),nullable = False)
     leave_status = db.Column(db.String(100),nullable = False,default = 'No')
+    approved_by = db.Column(db.String(100),nullable = False)
 
     def serialize(self):
         return {
@@ -558,8 +584,8 @@ def get_absence(leave_id):
 
 class Attendance(db.Model):
     attendance_id = db.Column(db.Integer, primary_key=True)
-    emp_id = db.Column(db.Integer,nullable = False)
-    emp_name = db.Column(db.String(100), nullable=False)
+    emp_id = db.Column(db.String(100),nullable = False)
+    # emp_name = db.Column(db.String(100), nullable=False)
     entry_time = db.Column(db.DateTime,nullable = True)
     exit_time = db.Column(db.DateTime,nullable = True)
     date = db.Column(db.Date, default=lambda: datetime.utcnow().date())
@@ -608,37 +634,44 @@ class Attendance(db.Model):
 @app.route('/attendance', methods=['POST'])
 def mark_entry_exit():
     current_time = datetime.utcnow()
-    data = request.json
-    employee_id = data.get('emp_id')
-    employee_name = data.get('emp_name')
-    status = data.get('status')
+    # data = request.json
+    employee_id,image_path = real_time_face_detection()
+    # employee_name = data.get('emp_name')
+    # status = data.get('status')
+    print("employee_id is ---------------- ",employee_id)
 
 
-    if employee_id is None and employee_name is None:
+
+    if employee_id is None:
         return jsonify({'messsage': 'emp_id and emp_name are required'}), 400
+    if employee_id == 'Unknown':
+        print("Inside if employee_id is unknown -------------------")
+        return({'message':'Employee not found','image_path':image_path})
 
     emp_exists = Employee.query.filter_by(emp_id = employee_id).first()
     today_record = Attendance.query.filter_by(emp_id=employee_id,date=current_time.date() ).first()
 
 
 
-    attendance_entry_exit = Attendance(emp_id=employee_id, emp_name=employee_name)
+    attendance_entry_exit = Attendance(emp_id=employee_id)
     attendance_entry_exit.mark_entry_exit()
     if emp_exists:
         if  today_record:
-            today_record.status = status
+            # today_record.status = status
 
             db.session.commit()
-            return({'message':'Your exit time has been updated'})
+            return({'message':'Your exit time has been updated','image_path':image_path})
 
         else:
 
-            return({'message':'Your attendance has been marked'})
+            return({'message':'Your attendance has been marked','image_path':image_path})
 
     else:
-        return({'message':'Employee not found'})
+        return({'message':'Employee not found','image_path':image_path})
 
     # return jsonify({'message': 'Entry/Exit marked successfully'}), 200
+
+
 
 
 
@@ -661,9 +694,10 @@ def get_attendance():
     return jsonify([attendance.serialize() for attendance in attendances])
 
 
+
 class Timeoff(db.Model):
     timeoff_id = db.Column(db.Integer,primary_key = True,autoincrement = True)
-    emp_id = db.Column(db.Integer,nullable = False)
+    emp_id = db.Column(db.String(100),nullable = False)
     emp_name = db.Column(db.String(120),nullable = False)
     timeoff = db.Column(db.String(120),nullable = False)
     date = db.Column(db.DateTime,nullable = False)
@@ -690,9 +724,9 @@ def get_timeoff(emp_id):
     return jsonify([i.serialize() for i in timeoffs])
 
 class holi(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, autoincrement = True)
     holiday_date = db.Column(db.String(255))
-    title = db.Column(db.String(255))
+    title = db.Column(db.String(255),primary_key=True)
 
     def __init__(self, holiday_date, title):
         self.holiday_date = holiday_date

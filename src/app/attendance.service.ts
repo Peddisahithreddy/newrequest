@@ -29,4 +29,8 @@ export class AttendanceService {
     const url = `${this.Url}`
     return this.http.get(this.Url)
   }
+  get_attendance_by_id(employeeId: string): Observable<any>{
+    const url = "http://127.0.0.1:5000/employees"
+    return this.http.get(`${this.Url}/${employeeId}`)
+  }
 }

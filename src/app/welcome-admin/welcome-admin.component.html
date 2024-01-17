@@ -9,7 +9,7 @@
         <!-- <img [src]="image" alt="Logo" class="logo2"> -->
     </div>
     <ul>
-      <li><a routerLink="/notification"[innerHTML]="bell_icon"alt="Photo Icon" class="nav-icon"></a></li>
+      <li><a [innerHTML]="bell_icon"alt="Photo Icon" class="nav-icon" [routerLink]="['/notification',id]"></a></li>
       <li><a  (click)="showNotification()"><img [src]="boy_icon" alt="Photo Icon" class="nav-icon">
         </a></li>
 

@@ -27,7 +27,7 @@ export class UserComponent implements OnInit{
   }
   onsave1(){
 
-    this.router.navigate(['/add-user']);
+    this.router.navigate(['/user-form']);
     }
     onsave2(){
 

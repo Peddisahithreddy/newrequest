@@ -2,13 +2,13 @@
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
+
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     justify-content: center;
+    background-size: cover;
     background-image: url("/assets/astreya_background.png");
-    height: 100vh;
+    /* height: 100vh; */
   }
   /* h2 {
     text-align: center;
@@ -18,32 +18,32 @@ body {
     padding-bottom: 10px;
   } */
   .admin-container {
-    
-     background-color: #fff; 
-     color: #333; 
-     padding: 20px;
+
+     background-color: #fff;
+     color: #333;
+     padding: 5px;
      font-family: 'Arial', sans-serif;
-    
+
      /* width: 180px; */
-     position: fixed;
-     
+     /* position: fixed; */
+
      border-radius: 10px; /* Rounded corners */
-     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   }
   h1{
-    margin-left: 7vw;
+    margin-left: 7px;
     color: black;
   }
   form {
     background-color: #fff;
-    padding: 20px;
+    padding: 10px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
 
   label {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 3px;
     font-weight: bold;
   }
 
@@ -69,7 +69,7 @@ body {
   .file{
     margin-left:auto;
   }
-  
+
 
   /* #photo-preview {
     max-width: 100%;

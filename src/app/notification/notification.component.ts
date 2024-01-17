@@ -27,6 +27,7 @@ export class NotificationComponent implements OnInit {
   employees!: any[]
   result!: string;
   leaves: any = [];
+  datas: any = [];
   emp_id!: number;
   empId!: number;
   employeeName!: string;
@@ -34,11 +35,16 @@ export class NotificationComponent implements OnInit {
   dateto!: Date;
   email!: string;
   leave_status!: string;
+  admin_username!: string;
+  admin_email!: string;
+  user_name!: string;
+
 
 
   //id: number = history.state.data[0];
   //email: string = history.state.data[2];
-  employeeid = -1;
+  route: ActivatedRoute = inject(ActivatedRoute);
+  adminid = -1;
   contact_no!: number;
   urlToNavigateTo?: string;
   constructor(private router: Router,
@@ -46,19 +52,22 @@ export class NotificationComponent implements OnInit {
     private employeeService: EmployeeserviceService,
     private requestService: RequestService,
     private userService: UserserviceService,
+    private myService: MyserviceService,
     private attendanceService: AttendanceService,
     private absenceService: AbsenceService,
     private cdr: ChangeDetectorRef,
+
     @Inject(DOCUMENT) private _document: Document
-  ) { }
+  ) {this.adminid = Number(this.route.snapshot.params['id'])}
 
   ngOnInit(): void {
 
 
-    this.Router.paramMap.subscribe(params => {
-      this.employeeid = Number(params.get('employees'));
-    });
 
+    // this.Router.paramMap.subscribe(params => {
+    //   this.adminid = Number(params.get('employees'));
+    // });
+    console.log("admin_id is :",this.adminid)
     // this.markleaveService.get_request().subscribe((response) => {
     //   this.leaves = response
     //   console.log("Emp_id is :", this.employeeid)
@@ -66,9 +75,19 @@ export class NotificationComponent implements OnInit {
 
 
     // })
+    this.myService.get_admin_by_id(this.adminid).subscribe((response) => {
+      this.admin_username = response.username
+      this.admin_email = response.email
+    })
     this.requestService.get_request().subscribe((response) => {
       this.leaves = response
     })
+    this.userService.getAllUsers().subscribe((response) => {
+      this.datas = response
+      console.log(this.datas)
+
+    })
+
 
 
 
@@ -86,6 +105,32 @@ export class NotificationComponent implements OnInit {
 
 
 
+  }
+  handleUserClick(emp_id: string){
+    this.userService.getUser(emp_id).subscribe((respone) => {
+      const datajson = {
+        emp_id: respone.emp_id,
+        emp_name: respone.emp_name,
+        job_position: respone.job_position,
+        email: respone.email,
+        role: respone.role,
+        contact_no: respone.contact_no,
+
+      }
+      console.log("Id of the user in user table is :",datajson)
+
+      this.employeeService.createEmployee(datajson).subscribe((respone) => {})
+      this.userService.deleteUser(emp_id).subscribe((respone) => {})
+
+
+
+    })
+
+  }
+  getId(emp_id: string){
+    console.log("Id of the user in user table is :",emp_id)
+    console.log("",emp_id)
+    this.userService.deleteUser(emp_id).subscribe((response) => {console.log("User Deleted Successfully")})
   }
   requestId(requestId: number): Observable<any> {
     console.log("request_id is : ", requestId)
@@ -109,6 +154,8 @@ export class NotificationComponent implements OnInit {
     this.requestService.deleteRequest(requestID).subscribe((response) => {console.log(response)})
   }
   handleButtonClick(emp_id: number, requestId: number) {
+
+    // this.myService.get_admin_by_id(this.adminid).subscribe((response) => {username = response.username})
     console.log("emp_id and requestId are :", emp_id, requestId);
 
     const getEmployee$ = this.employeeService.getEmployeeById(emp_id);
@@ -116,37 +163,51 @@ export class NotificationComponent implements OnInit {
 
     forkJoin([getEmployee$, getRequest$]).subscribe(
         ([employeeResponse, requestResponse]) => {
-            this.contact_no = employeeResponse.contact_no;
+          const datajson = {
+            emp_id: emp_id,
+            emp_name: requestResponse.emp_name,
+            date_from: requestResponse.date_from,
+            date_to: requestResponse.date_to,
+            contact_no: '123',  // Replace with actual contact_no
+            email: requestResponse.email,
+            leave_status: 'Approved',
+            status:'Present',
+            approved_by:this.admin_username
+        };
 
-            const datajson = {
-                'emp_id': emp_id,
-                'emp_name': requestResponse.emp_name,
-                'date_from': requestResponse.date_from,
-                'date_to': requestResponse.date_to,
-                'contact_no': '123',  // Replace with actual contact_no
-                'email': requestResponse.email,
-                'leave_status': 'Approved'
-            };
+        console.log("json value is :", datajson);
 
-            console.log("json value is :", datajson);
+          if (requestResponse.request_type == 'Regularize attendance'){
+            this.attendanceService.post_attendance(datajson).subscribe((response) => {})
 
-            // Perform postAbsence and deleteRequest in parallel
-            forkJoin([
-                this.absenceService.postAbsence(datajson),
-                this.requestService.deleteRequest(requestId)
-            ]).subscribe(([postAbsenceResponse, deleteRequestResponse]) => {
-                console.log("post absence data is :", postAbsenceResponse);
-                console.log("delete response:", deleteRequestResponse);
+            console.log("Inside if block ",datajson)
 
-                // Reload the page after all operations are completed
-                window.location.reload();
-            });
+          }
+          else{
+            console.log(requestResponse.request_type)
+              this.contact_no = employeeResponse.contact_no;
+              console.log("inside else block",datajson)
+
+              // Perform postAbsence and deleteRequest in parallel
+              forkJoin([
+                  // console.log("Inside fork join",datajson),
+                  this.absenceService.postAbsence(datajson),
+                  //this.requestService.deleteRequest(requestId)
+              ]).subscribe(([postAbsenceResponse])  => {
+                console.log("inside post request of absence service :")
+                  console.log("post absence data is :", postAbsenceResponse);
+                  //console.log("delete response:", deleteRequestResponse);
+
+                  // Reload the page after all operations are completed
+                  //window.location.reload();
+              });}
   })
 }
 
 
 
   onsave() {
+
     console.log("inside onsave function")
     const leave_id = 123
     this.requestId(leave_id)

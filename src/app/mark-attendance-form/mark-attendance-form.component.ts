@@ -1,5 +1,5 @@
-import { Component,OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component,OnInit, inject } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AttendanceService } from '../attendance.service';
 import { FormsModule } from '@angular/forms';
 import { DialogService } from '../dialog.service';
@@ -17,24 +17,43 @@ export class MarkAttendanceFormComponent implements OnInit{
   userId!: number;
   message: string = '';
   details: boolean = false;
+  url!: string;
+  img="../assets/uploads/captured_image.jpg"
+  route: ActivatedRoute = inject(ActivatedRoute);
   successMessage$ = this.dialogService.successMessageAction$;
   errorMessage$ = this.dialogService.errorMessageAction$
   constructor(private router: Router, private attendanceService: AttendanceService,
     private dialogService: DialogService,private myService: MyserviceService) { }
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
+    ngOnInit(): void {
+      // this.captureService.capture_and_store_image().subscribe((response)=>{
+        // console.log(response)
+        // this.url = "../" + response.image_location
+        // console.log(this.url)
+      // })
+      // this.route.queryParams.subscribe(params => {
+      //   this.url = params['key1'];
+
+      //   // Access more parameters as needed
+      //   console.log('Received data:',  this.url);
+      // });
+      setTimeout(() => {
+        this.router.navigate(['/attendance']);
+      }, 3000);
+    }
+
   onSubmit() {
     this.details = true;
 
     // Check if 'details' is true
 
     const jsonData = {
-      "emp_id": this.userId,
-      "emp_name": this.username
+
+      emp_name: 'sahith'
     }
     this.attendanceService.post_attendance(jsonData).pipe(
+
       tap(response => {
+        console.log(jsonData)
         console.log("function response is :",response)
         console.log("response is :",response.message)
         if (response.message == 'Employee not found') {
